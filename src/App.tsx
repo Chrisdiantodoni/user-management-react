@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Suspense, useEffect, useState } from "react";
 import { LoginForm } from "./components/login-form";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import AuthLayout from "./layout/AuthLayout";
 import createStore from "./store";
