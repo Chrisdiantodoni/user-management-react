@@ -9,7 +9,6 @@ import Adminlayout from "./layout/AdminLayout";
 import routes from "./routes";
 import { useGetUser } from "./hooks/useGetUser";
 import { Toaster } from "./components/ui/sonner";
-import { ReactQueryDevtools } from "../node_modules/@tanstack/react-query-devtools/src/index";
 
 function App() {
   const { isAuthenticated, handle } = createStore();
@@ -54,7 +53,6 @@ function App() {
         </Route>
       </Routes>
       <Toaster />
-      <ReactQueryDevtools initialIsOpen={true} />
     </>
   );
 }

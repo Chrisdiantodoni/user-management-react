@@ -103,6 +103,7 @@ export function LoginForm({
                 <Label htmlFor="email">Username</Label>
                 <Input
                   type="text"
+                  placeholder="Enter your username"
                   error={errors.username?.message}
                   {...register("username")}
                 />
@@ -113,6 +114,7 @@ export function LoginForm({
                 </div>
                 <Input
                   id="password"
+                  placeholder="Enter your password"
                   type="password"
                   {...register("password")}
                   error={errors.password?.message}

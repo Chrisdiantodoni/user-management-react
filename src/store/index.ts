@@ -4,6 +4,7 @@ type ModalState = {
   modalDeleteUser: boolean;
   modalUser: boolean;
   modalResetPassword: boolean;
+  modalChangePassword: boolean;
 };
 
 type StoreState = {
@@ -22,6 +23,7 @@ const initialModalState: ModalState = {
   modalDeleteUser: false,
   modalResetPassword: false,
   modalUser: false,
+  modalChangePassword: false,
 };
 
 const useStore = create<StoreState>((set) => ({

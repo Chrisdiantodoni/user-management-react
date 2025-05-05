@@ -29,6 +29,11 @@ class users {
       .put(`/users/${id}/reset-password`)
       .then((res) => res.data);
   }
+  async changePassword(body: unknown, id: string) {
+    return await instance
+      .post(`/users/${id}/change-password`, body)
+      .then((res) => res.data);
+  }
 
   async updateUserStatus(body: unknown, id: string) {
     return await instance

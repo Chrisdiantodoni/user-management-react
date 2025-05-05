@@ -1,4 +1,4 @@
-import { ChevronsUpDown, LogOut } from "lucide-react";
+import { ChevronsUpDown, LogOut, Lock } from "lucide-react";
 
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import {
@@ -20,12 +20,13 @@ import { useMutation } from "@tanstack/react-query";
 import users from "@/services/api/users";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
+import { ChangePasswordDialog } from "@/pages/user/components/CHangePasswordDialog";
+import { useEffect } from "react";
 
 export function NavUser() {
   const { isMobile } = useSidebar();
 
-  const { handle } = createStore();
-  const { userData } = createStore();
+  const { handle, handleModal, userData } = createStore();
   const navigate = useNavigate();
 
   const { mutate } = useMutation({
@@ -50,8 +51,15 @@ export function NavUser() {
     },
   });
 
+  useEffect(() => {
+    if (userData?.password_reset_at != null) {
+      handleModal("modalChangePassword", true);
+    }
+  }, [userData, handleModal]);
+
   return (
     <SidebarMenu>
+      <ChangePasswordDialog />
       <SidebarMenuItem>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -88,8 +96,13 @@ export function NavUser() {
                 </div>
               </div>
             </DropdownMenuLabel>
+            <DropdownMenuItem
+              onClick={() => handleModal("modalChangePassword", true)}
+            >
+              <Lock />
+              Change Password
+            </DropdownMenuItem>
             <DropdownMenuSeparator />
-
             <DropdownMenuItem onClick={() => mutate()}>
               <LogOut />
               Log out
