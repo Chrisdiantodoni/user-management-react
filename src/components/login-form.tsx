@@ -58,26 +58,12 @@ export function LoginForm({
         navigate("/", { replace: true });
         handle("userData", { ...res?.data?.user });
         handle("isAuthenticated", true);
-        // toast(
-        // 	<Toasts title='Login Success' icon='VerifiedUser' iconColor='success'>
-        // 		User Login Successfully
-        // 	</Toasts>,
-        // 	{
-        // 		autoClose: 1000,
-        // 	},
-        // );
+
         toast.success("Login Success");
       } else {
         console.log(res);
         toast.error(`Login Failed\n${res?.response?.data?.data}`);
-        // toast(
-        // 	<Toasts title='Login Failed' icon='VerifiedUser' iconColor='danger'>
-        // 		Login Failed
-        // 	</Toasts>,
-        // 	{
-        // 		autoClose: 1000,
-        // 	},
-        // );
+
         return res;
       }
     },
